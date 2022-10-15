@@ -1,15 +1,9 @@
-from Video import Video
+from pydantic import BaseModel
 
-class Sala:
-     
+class Sala(BaseModel):     
     videos = []
-
-    def __init__(self, name):
-        self.name = name
-
+    nome: str
+    
     def add_video(self, video):
         self.videos.append(video)
- 
-    
-    
     

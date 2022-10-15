@@ -1,5 +1,6 @@
-class Video:
-    def _init_(self, nome, link):
-        self.id = id
-        self.nome = nome
-        self.link = link
+from pydantic import BaseModel
+
+class Video(BaseModel):   
+    id: str
+    nome : str
+    link : str

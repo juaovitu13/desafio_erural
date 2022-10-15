@@ -1,34 +1,66 @@
+#region Models
+from pydantic import BaseModel
+
+class Video(BaseModel):   
+    id: str
+    nome : str
+    link : str
+
+class Sala(BaseModel):    
+    id: str
+    nome: str
+    videos = []    
+    
+    def add_video(self, video):
+        self.videos.append(video)
+#endregion
+
+#region WEB API
 from fastapi import FastAPI
-from models.Sala import Sala
 
 app = FastAPI()
 
 #CRUD de salas
-
 #Create
 @app.post("/salas")
-def hello_root(sala: Sala):
-    
+def criar_sala(sala: Sala):
     #Lógica para cadastrar uma sala    
-    return {"message": "Sala cadastrada com sucesso!"}
+    return {"message": "Sala cadastrada com sucesso!",
+            "Dados da sala": {
+                "Id": sala.id,
+                "Nome": sala.nome
+            }}
+    #return sala
 
-#Read
+#Read -> Sala específica pelo id
+@app.get("/salas/id")
+def obter_sala_pelo_id(id):
+    
+    #Lógica para consultar uma sala    
+    return {"message": "Retornar informação da sala de id: " + id}
+
+#Read -> Todas as salas
 @app.get("/salas")
-def hello_root():
+def obter_salas():
     
     #Lógica para consultar uma sala    
     return {"message": "Retornar informação das salas cadastradas"}
 
 #Update
 @app.put("/salas")
-def hello_root():
+def atualizar_sala(sala: Sala):
     
     #Lógica para atualizar uma sala 
-    return {"message": "Sala atualizada com sucesso!"}
+    return {"message": "Sala atualizada com sucesso!",
+            "Dados da sala": {
+                "Id": sala.id,
+                "Nome": sala.nome
+            }}
 
 #Delete
-@app.delete("/salas")
-def hello_root():
+@app.delete("/salas/id")
+def deletar_sala(id):
     
     #Lógica para deletar uma sala 
-    return {"message": "Sala excluída com sucesso"}
+    return {"message": "Sala de id: " + id + " excluída com sucesso!"}
+#endregion
