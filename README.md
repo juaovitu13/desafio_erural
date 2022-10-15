@@ -45,7 +45,7 @@ Para a edição do arquivo readme.md do repositório do GitHub.
 
 ##### 4.1. Backend
 
-Para executar o backend, basta acessar o diretório do projeto usando o console e digitar o comando: **uvicorn main:app --reload**
+Para executar o backend, basta acessar o diretório do projeto (backend\controllers) usando o console e digitar o comando: **uvicorn MoviesController:app --reload**
 
 #### 4.2. Frontend
 
