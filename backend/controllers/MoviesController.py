@@ -1,13 +1,13 @@
 from fastapi import FastAPI
+from models.Sala import Sala
 
 app = FastAPI()
-
 
 #CRUD de salas
 
 #Create
 @app.post("/salas")
-def hello_root():
+def hello_root(sala: Sala):
     
     #Lógica para cadastrar uma sala    
     return {"message": "Sala cadastrada com sucesso!"}

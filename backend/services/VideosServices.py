@@ -7,7 +7,7 @@ class VideosServices:
     def __init__(self):    
         self.salaRepository = SalasRepository()
     
-    #Por que o método add, da classe "SalasRepository" não é reconhecido aqui?
+    #Por que o método "add", da classe "SalasRepository" não é reconhecido aqui?
     
     def add(self, sala: Sala):
         return self.salaRepository.add(Sala)
