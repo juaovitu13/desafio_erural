@@ -41,12 +41,12 @@ Para desenvolvimento do código fonte.
 
 Para a edição do arquivo readme.md do repositório do GitHub.
 
-#### 3. Instruções para execução do projeto
+#### 4. Instruções para execução do projeto
 
-##### 3.1. Backend
+##### 4.1. Backend
 
 Para executar o backend, basta acessar o diretório do projeto usando o console e digitar o comando: *nononononoononono*
 
-#### 3.2. Frontend
+#### 4.2. Frontend
 
 Para executar o frontend, basta acessar o diretório do projeto e abrir o arquivo *index.html*.
