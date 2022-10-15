@@ -41,8 +41,6 @@ Para desenvolvimento do código fonte.
 
 Para a edição do arquivo readme.md do repositório do GitHub.
 
-Aplicativo web contruído com HTML, Javascript, CSS e o framework Bootstrap.
-
 #### 3. Instruções para execução do projeto
 
 ##### 3.1. Backend
