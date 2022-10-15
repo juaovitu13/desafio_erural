@@ -5,7 +5,7 @@
 
 #### 1. Objetivo
 
-Construir um sistema de streaming de vídeos, em que os usuários possam cadastrar salas, e criar uma lista de vádeos em cada sala. Posteriormente, o usuario pode compartilhar o link da sala e assistir aos vídeos simultaneamente com outros usuários da plataforma.
+Construir um sistema de streaming de vídeos, em que os usuários possam cadastrar salas, e criar uma lista de vídeos em cada sala. Posteriormente, o usuário pode compartilhar o link da sala e assistir aos vídeos simultaneamente com outros usuários da plataforma.
 
 
 #### 2. Tecnologias utilizadas
@@ -15,7 +15,7 @@ A solução é composta de dois projetos, sendo:
 
 ##### 2.1. Backend
 
-Construido na linguagem Phyton. Sendo responsável por fazer a manutenção das salas de reprodução com seus respectivos vídeos.
+Construido na linguagem Phyton. Sendo responsável por fazer a manutenção das salas de reprodução com seus respectivos vídeos e prover acesso por meio de uma WEB API para o aplicativo web (frontend).
 
 
 #####  2.2. Frontend
