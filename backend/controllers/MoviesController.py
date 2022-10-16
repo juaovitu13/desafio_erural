@@ -1,6 +1,8 @@
 #region Models
 from pydantic import BaseModel
 
+videos = [['kkk', 'joão']]
+
 class Video(BaseModel):   
     id: str
     nome : str
@@ -9,8 +11,7 @@ class Video(BaseModel):
 class Sala(BaseModel):    
     id: str
     nome: str
-    videos = []    
-    
+        
     def add_video(self, video):
         self.videos.append(video)
 #endregion
@@ -34,17 +35,17 @@ def criar_sala(sala: Sala):
 
 #Read -> Sala específica pelo id
 @app.get("/salas/id")
-def obter_sala_pelo_id(id):
-    
+def obter_sala_pelo_id(id: str):
+    for i in range(len(videos)):
+        if id == videos[i][0]:
     #Lógica para consultar uma sala    
-    return {"message": "Retornar informação da sala de id: " + id}
+         return {"message": "Retornar informação da sala de id: " + id}
 
 #Read -> Todas as salas
 @app.get("/salas")
 def obter_salas():
-    
     #Lógica para consultar uma sala    
-    return {"message": "Retornar informação das salas cadastradas"}
+    return {"message": "Retornar informação das salas cadastradas" }
 
 #Update
 @app.put("/salas")
