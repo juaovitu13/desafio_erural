@@ -1,8 +1,6 @@
 #region Models
 from pydantic import BaseModel
 
-salas = []
-
 class Video(BaseModel):   
     id: str
     nome : str
@@ -11,9 +9,12 @@ class Video(BaseModel):
 class Sala(BaseModel):    
     id: str
     nome: str
+    videos = []
         
     def add_video(self, salas):
         self.videos.append(salas)
+
+salas:Sala = []
 #endregion
 
 #region WEB API
@@ -21,9 +22,9 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-#CRUD de salas
+#region #CRUD de salas
 #Create
-@app.post("/salas/criar")
+@app.post("/salas")
 def criar_sala(sala: Sala):
     #Lógica para cadastrar uma sala 
     salas.append(sala)    
@@ -32,43 +33,51 @@ def criar_sala(sala: Sala):
                 "Id": sala.id,
                 "Nome": sala.nome
             }}
-    #return sala
 
 #Read -> Sala específica pelo id
-@app.get("/salas/{id_salas}")
-def obter_sala_pelo_id(id_salas: str):
-    #Lógica para consultar uma sala
-    for i in range(len(salas)):            
-        if salas[i].id == id_salas:
-         return salas[i]#{"message": "Retornar informação da sala de id: " + id}
+@app.get("/salas/{id_sala}")
+def obter_sala_pelo_id(id_sala: str):
+
+    for i in range(len(salas)):
+        if salas[i].id == id_sala:
+         return salas[i]
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
-        
-       
 
 #Read -> Todas as salas
 @app.get("/salas")
 def obter_salas():
-    #Lógica para consultar uma sala    
-    return salas#{f"message": "Retornar informação das salas cadastradas"}
+
+    return salas
     
 #Update
-@app.put("/salas/atualizar")
+@app.put("/salas")
 def atualizar_sala(sala: Sala):
-    #Lógica para atualizar uma sala 
-    return {"message": "Sala atualizada com sucesso!",
-            "Dados da sala": {
-                "Id": sala.id,
-                "Nome": sala.nome
-            }}
+    for i in range(len(salas)):
+        if salas[i].id == sala.id:
+         salas[i] = sala
+         return {"message": "Sala de id: " + sala.id + " atualizada com sucesso!"}
+    return{"Status": 404, "Mensagem": "Sala não encontrada"}
 
 #Delete
-@app.delete("/salas/delet_id")
+@app.delete("/salas/id")
 def deletar_sala(id: str):
-    #Lógica para deletar uma sala 
-     for i in range(len(salas)):
+    for i in range(len(salas)):
         if salas[i].id == id:
          del salas[i]
          return {"message": "Sala de id: " + id + " excluída com sucesso!"}
-     return{"Status": 404, "Mensagem": "Sala não encontrada"}#{"message": "Sala de id: " + id + " excluída com sucesso!"}
+    return{"Status": 404, "Mensagem": "Sala não encontrada"}
+#endregion
+
+#region cadastro de vídeos nas salas
+@app.post("/salas/{id}/videos")
+def cadastrar_video(id, video: Video):
+    #Lógica para cadastrar uma sala 
+    for i in range(len(salas)):
+        if salas[i].id == id:
+         salas[i].videos.append(video)
+         return {"message": "Vídeo cadastrado com sucesso!"}
+    return{"Status": 404, "Mensagem": "Sala não encontrada"}
+
+#endregion
 
 #endregion

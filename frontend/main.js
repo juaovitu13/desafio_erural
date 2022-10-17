@@ -10,7 +10,9 @@ function criaLinha(sala) {
 }
 
 function main() {
-    console.log(fazGet("http://127.0.0.1:8000/"));
+    let data = fazGet("http://127.0.0.1:8000/salas");
+    salas = JSON.parse(data);
+    console.log()
    
 }
 
