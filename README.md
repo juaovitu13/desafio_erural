@@ -66,4 +66,4 @@ Será exibida a interface Swagger com todos os endpoints da API.
 
 #### 4.2. Frontend
 
-Para executar o frontend, basta acessar o diretório do projeto e abrir o arquivo *index.html*.
+Para executar o frontend, basta acessar o diretório do projeto e abrir o arquivo *index.html* nele será exibido as salas cadastradas.
