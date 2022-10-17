@@ -57,7 +57,7 @@ Após isto, acesse o diretório do projeto (backend\controllers) usando o consol
 **uvicorn MoviesController:app --reload**.
 
 Após a mensagem de finalização da execução do comando, basta acessar o seguinte endereço no browser: **http://127.0.0.1:8000/docs**.
-Será exibida a interface Swagger com todos os endpoints da API.
+Será exibida a interface Swagger com todos os endpoints da API. Para executar o backend em uma porta específica, execute o comando: **unicornMoviesController:app --port ???? --reload**.
 
 
 #### 4.2. Frontend
