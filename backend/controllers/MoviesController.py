@@ -9,7 +9,7 @@ class Video(BaseModel):
 class Sala(BaseModel):    
     id: str
     nome: str
-    videos = []
+
         
     def add_video(self, salas):
         self.videos.append(salas)
@@ -24,7 +24,7 @@ app = FastAPI()
 
 #region #CRUD de salas
 #Create
-@app.post("/salas")
+@app.post("/salas/criar")
 def criar_sala(sala: Sala):
     #Lógica para cadastrar uma sala 
     salas.append(sala)    
@@ -50,7 +50,7 @@ def obter_salas():
     return salas
     
 #Update
-@app.put("/salas")
+@app.put("/salas/atualizar")
 def atualizar_sala(sala: Sala):
     for i in range(len(salas)):
         if salas[i].id == sala.id:
@@ -59,7 +59,7 @@ def atualizar_sala(sala: Sala):
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
 
 #Delete
-@app.delete("/salas/id")
+@app.delete("/salas/deletar")
 def deletar_sala(id: str):
     for i in range(len(salas)):
         if salas[i].id == id:
