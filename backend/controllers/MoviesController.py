@@ -23,7 +23,7 @@ app = FastAPI()
 
 #CRUD de salas
 #Create
-@app.post("/salas")
+@app.post("/salas/criar")
 def criar_sala(sala: Sala):
     #Lógica para cadastrar uma sala 
     salas.append(sala)    
@@ -39,9 +39,11 @@ def criar_sala(sala: Sala):
 def obter_sala_pelo_id(id_salas: str):
     #Lógica para consultar uma sala
     for i in range(len(salas)):            
-        if salas[i][0] == id_salas:
+        if salas[i].id == id_salas:
          return salas[i]#{"message": "Retornar informação da sala de id: " + id}
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
+        
+       
 
 #Read -> Todas as salas
 @app.get("/salas")
@@ -50,9 +52,8 @@ def obter_salas():
     return salas#{f"message": "Retornar informação das salas cadastradas"}
     
 #Update
-@app.put("/salas")
+@app.put("/salas/atualizar")
 def atualizar_sala(sala: Sala):
-    
     #Lógica para atualizar uma sala 
     return {"message": "Sala atualizada com sucesso!",
             "Dados da sala": {
@@ -61,13 +62,13 @@ def atualizar_sala(sala: Sala):
             }}
 
 #Delete
-@app.delete("/salas/id")
+@app.delete("/salas/delet_id")
 def deletar_sala(id: str):
-    
     #Lógica para deletar uma sala 
-    for i in range(len(salas)):            
-        if salas[i][0] == id:
-            del salas[i]
-            return {"message": "Sala de id: " + id + " excluída com sucesso!"}
+     for i in range(len(salas)):
+        if salas[i].id == id:
+         del salas[i]
+         return {"message": "Sala de id: " + id + " excluída com sucesso!"}
+     return{"Status": 404, "Mensagem": "Sala não encontrada"}#{"message": "Sala de id: " + id + " excluída com sucesso!"}
 
 #endregion
