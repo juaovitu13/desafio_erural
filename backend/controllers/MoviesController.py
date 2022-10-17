@@ -40,7 +40,7 @@ def obter_sala_pelo_id(id: str):
     #Lógica para consultar uma sala
     for sala in videos:
         if (videos == id):    
-         return {"message": "Retornar informação da sala de id: " + id}
+         return videos[i]#{"message": "Retornar informação da sala de id: " + id}
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
 
 #Read -> Todas as salas
