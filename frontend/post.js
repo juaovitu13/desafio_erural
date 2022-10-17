@@ -15,7 +15,7 @@ function fazPost(url, body) {
 
 function cadastraUsuario() {
     event.preventDefault()
-    let url = "http://127.0.0.1:8000"
+    let url = "http://127.0.0.1:8000/salas"
     let nome = document.getElementById("id").value
     let email = document.getElementById("nome").value
     console.log(id)

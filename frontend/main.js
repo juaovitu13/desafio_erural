@@ -11,7 +11,7 @@ function criaLinha(sala) {
     tdId = document.createElement("td");
     tdNome = document.createElement("td");
     tdId.innerHTML = sala.id
-    tdNome.innerHTML = sala.name
+    tdNome.innerHTML = sala.nome
 
     linha.appendChild(tdId);
     linha.appendChild(tdNome);
@@ -20,7 +20,7 @@ function criaLinha(sala) {
 }
 
 function main() {
-    let data = fazGet("http://127.0.0.1:8000");
+    let data = fazGet("http://127.0.0.1:8000/salas");
     let salas = JSON.parse(data);
     let tabela = document.getElementById("tabela");
     salas.forEach(element => {
