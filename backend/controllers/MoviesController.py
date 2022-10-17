@@ -18,6 +18,23 @@ salas: Sala = []
 from fastapi import FastAPI
 app = FastAPI()
 
+#region Configuração para permitir conexão apartir do frontend
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+#endregion
+
+
 #region CRUD de salas
 #Create
 @app.post("/salas")
