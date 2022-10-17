@@ -6,14 +6,31 @@ function fazGet(url) {
 }
 
 function criaLinha(sala) {
-    
+    console.log(sala)
+    linha = document.createElement("tr");
+    tdId = document.createElement("td");
+    tdNome = document.createElement("td");
+    tdId.innerHTML = sala.id
+    tdNome.innerHTML = sala.name
+
+    linha.appendChild(tdId);
+    linha.appendChild(tdNome);
+
+    return linha;
 }
 
 function main() {
-    let data = fazGet("http://127.0.0.1:8000/salas");
-    salas = JSON.parse(data);
-    console.log()
-   
+    let data = fazGet("http://127.0.0.1:8000");
+    let salas = JSON.parse(data);
+    let tabela = document.getElementById("tabela");
+    salas.forEach(element => {
+        let linha = criaLinha(element);
+        tabela.appendChild(linha);
+    });
+
+   // Para cada sala
+        // criar uma linha
+        // adicionar na tabela
 }
 
 main()

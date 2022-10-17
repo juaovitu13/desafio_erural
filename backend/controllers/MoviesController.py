@@ -9,22 +9,18 @@ class Video(BaseModel):
 class Sala(BaseModel):    
     id: str
     nome: str
+    videos: Video = []
 
-        
-    def add_video(self, salas):
-        self.videos.append(salas)
-
-salas:Sala = []
+salas: Sala = []
 #endregion
 
 #region WEB API
 from fastapi import FastAPI
-
 app = FastAPI()
 
-#region #CRUD de salas
+#region CRUD de salas
 #Create
-@app.post("/salas/criar")
+@app.post("/salas")
 def criar_sala(sala: Sala):
     #Lógica para cadastrar uma sala 
     salas.append(sala)    
@@ -50,7 +46,7 @@ def obter_salas():
     return salas
     
 #Update
-@app.put("/salas/atualizar")
+@app.put("/salas")
 def atualizar_sala(sala: Sala):
     for i in range(len(salas)):
         if salas[i].id == sala.id:
@@ -59,24 +55,44 @@ def atualizar_sala(sala: Sala):
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
 
 #Delete
-@app.delete("/salas/deletar")
+@app.delete("/salas/id")
 def deletar_sala(id: str):
     for i in range(len(salas)):
         if salas[i].id == id:
-         del salas[i]
-         return {"message": "Sala de id: " + id + " excluída com sucesso!"}
-    return{"Status": 404, "Mensagem": "Sala não encontrada"}
+            del salas[i]
+            return {"message": "Sala de id: " + id + " excluída com sucesso!"}
+    return{"Status": 404, "Mensagem": "Sala não encontrada!"}
 #endregion
 
-#region cadastro de vídeos nas salas
+#region CRUD vídeos nas salas
+
+#incluir um vídeo em uma sala
 @app.post("/salas/{id}/videos")
 def cadastrar_video(id, video: Video):
-    #Lógica para cadastrar uma sala 
     for i in range(len(salas)):
         if salas[i].id == id:
-         salas[i].videos.append(video)
-         return {"message": "Vídeo cadastrado com sucesso!"}
+            salas[i].videos.append(video)
+            return {"message": "Vídeo cadastrado com sucesso!"}
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
+
+
+#deletar um vídeo em uma sala
+@app.delete("/salas/{id_sala}/videos/{id_video}")
+def deletar_video(id_sala, id_video):
+    
+    for i in range(len(salas)):
+        
+        if salas[i].id == id_sala:
+        
+            for j in range(len(salas[i].videos)):
+        
+                if str(salas[i].videos[j].id) == str(id_video):
+                    del salas[i].videos[j]
+                    return {"message": "Vídeo deletado com sucesso!"}
+
+            return{"Status": 404, "Mensagem": "Vídeo não encontrado na sala!"}    
+
+    return{"Status": 404, "Mensagem": "Sala não encontrada!"}    
 
 #endregion
 
