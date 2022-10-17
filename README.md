@@ -25,10 +25,6 @@ Aplicativo web, construído com HTML, CSS, JavaScript e o framework Bootstrap.
 
 #### 3. Ferramentas utilizadas
 
-**- Draw.io**
-
-Para desenhar o diagrama da solução.
-
 **- GitHub**
 
 Para hospedar o código fonte do projeto.
