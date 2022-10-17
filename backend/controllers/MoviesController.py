@@ -1,7 +1,7 @@
 #region Models
 from pydantic import BaseModel
 
-videos = []
+salas = []
 
 class Video(BaseModel):   
     id: str
@@ -12,8 +12,8 @@ class Sala(BaseModel):
     id: str
     nome: str
         
-    def add_video(self, video):
-        self.videos.append(video)
+    def add_video(self, salas):
+        self.videos.append(salas)
 #endregion
 
 #region WEB API
@@ -26,7 +26,7 @@ app = FastAPI()
 @app.post("/salas")
 def criar_sala(sala: Sala):
     #Lógica para cadastrar uma sala 
-    videos.append(sala)    
+    salas.append(sala)    
     return {"message": "Sala cadastrada com sucesso!",
             "Dados da sala": {
                 "Id": sala.id,
@@ -35,19 +35,19 @@ def criar_sala(sala: Sala):
     #return sala
 
 #Read -> Sala específica pelo id
-@app.get("/salas/id")
-def obter_sala_pelo_id(id: str):
+@app.get("/salas/{id_salas}")
+def obter_sala_pelo_id(id_salas: str):
     #Lógica para consultar uma sala
-    for sala in videos:
-        if (videos == id):    
-         return videos[i]#{"message": "Retornar informação da sala de id: " + id}
+    for i in range(len(salas)):            
+        if salas[i][0] == id_salas:
+         return salas[i]#{"message": "Retornar informação da sala de id: " + id}
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
 
 #Read -> Todas as salas
 @app.get("/salas")
 def obter_salas():
     #Lógica para consultar uma sala    
-    return videos#{f"message": "Retornar informação das salas cadastradas"}
+    return salas#{f"message": "Retornar informação das salas cadastradas"}
     
 #Update
 @app.put("/salas")
@@ -65,9 +65,9 @@ def atualizar_sala(sala: Sala):
 def deletar_sala(id: str):
     
     #Lógica para deletar uma sala 
-    for i in range(len(videos)):            
-        if videos[i][0] == id:
-            del videos[i]
+    for i in range(len(salas)):            
+        if salas[i][0] == id:
+            del salas[i]
             return {"message": "Sala de id: " + id + " excluída com sucesso!"}
 
 #endregion
