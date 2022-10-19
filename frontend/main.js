@@ -24,7 +24,7 @@ function abrirFormCadastro(){
     window.open('cadastro/form.html');
 }
 
-//Abre o formulário de deletar salas
+//deletar salas
 function abrirFormDeletar(){
     window.open('excluir/delet.html');
 }
