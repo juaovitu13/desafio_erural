@@ -18,7 +18,7 @@ function criaLinha(sala) {
     //Cria a coluna com o botão para excluir
     tdExcluir = document.createElement("td");
     tdExcluir.innerHTML = '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>';
-    
+
     //Adiciona as colunas na linha
     linha.appendChild(tdId);
     linha.appendChild(tdNome);
@@ -31,6 +31,8 @@ function criaLinha(sala) {
 function excluirSala(id) {
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
             return true
+            let data = fazGet("http://127.0.0.1:8000/salas/id");
+            let salas = JSON.parse(data);
             let request = new XMLHttpRequest()
             request.open("DELETE", url, false)
             request.send()
@@ -43,19 +45,20 @@ function excluirSala(id) {
         // Depois exibe a mensagem de sucesso e atualiza a página de salas, para remover o item excluido da grade
     }
 
-//Abre o formulário de cadastro de salas
-function abrirFormCadastro() {
-    window.location.href ='cadastro/form.html'
-}
 
-function main() {
+    //Abre o formulário de cadastro de salas
+    function abrirFormCadastro() {
+        window.location.href = 'cadastro/form.html'
+    }
 
-    let data = fazGet("http://127.0.0.1:8000/salas");
-    let salas = JSON.parse(data);
-    let tabela = document.getElementById("tabela");
-    salas.forEach(element => {
-        let linha = criaLinha(element);
-        tabela.appendChild(linha);
+    function main() {
+
+        let data = fazGet("http://127.0.0.1:8000/salas");
+        let salas = JSON.parse(data);
+        let tabela = document.getElementById("tabela");
+        salas.forEach(element => {
+            let linha = criaLinha(element);
+            tabela.appendChild(linha);
         });
 
         // Para cada sala
