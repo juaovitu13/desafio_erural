@@ -34,12 +34,14 @@ app.add_middleware(
 )
 #endregion
 
-
 #region CRUD de salas
 #Create
 @app.post("/salas")
 def criar_sala(sala: Sala):
-    #Lógica para cadastrar uma sala 
+    
+    if(salaJaCadastrada(sala)):
+        return{"message": "Não foi possível cadastrar a sala. Id já utilizado"} 
+    
     salas.append(sala)    
     return {"message": "Sala cadastrada com sucesso!",
             "Dados da sala": {
@@ -79,6 +81,13 @@ def deletar_sala(id: str):
             del salas[i]
             return {"message": "Sala de id: " + id + " excluída com sucesso!"}
     return{"Status": 404, "Mensagem": "Sala não encontrada!"}
+
+def salaJaCadastrada(sala):
+    for i in range(len(salas)):
+        if salas[i].id == sala.id:
+            return True
+    return False
+
 #endregion
 
 #region CRUD vídeos nas salas
