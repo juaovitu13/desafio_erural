@@ -17,7 +17,10 @@ function criaLinha(sala) {
 
     //Cria a coluna com o botão para excluir
     tdExcluir = document.createElement("td");
-    tdExcluir.innerHTML = '<button onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>'
+    
+    //Voc~e néo copiou o código que te mandei naõ uai. Tõ totalmente diferente
+    //tdExcluir.innerHTML = '<button onclick="excluirSala()' + tdId.textContent + ')">Deletar</button>'
+    tdExcluir.innerHTML = '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>';
 
     //Adiciona as colunas na linha
     linha.appendChild(tdId);
@@ -41,6 +44,7 @@ function abrirFormCadastro() {
 }
 
 function main() {
+
     let data = fazGet("http://127.0.0.1:8000/salas");
     let salas = JSON.parse(data);
     let tabela = document.getElementById("tabela");
@@ -54,4 +58,5 @@ function main() {
         // adicionar na tabela
     }
 
+    //Aqui a aplicação se inicia
     main()
