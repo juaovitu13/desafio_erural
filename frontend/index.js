@@ -18,7 +18,6 @@ function criaLinha(sala) {
     //Cria a coluna com o botão para excluir
     tdExcluir = document.createElement("td");
     tdExcluir.innerHTML = '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>';
-    tdExcluir.setAttribute("onclick", "id.excluirSala()");
     
     //Adiciona as colunas na linha
     linha.appendChild(tdId);
@@ -31,9 +30,14 @@ function criaLinha(sala) {
 
 function excluirSala(id) {
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
-        let data = fazDelete("http://127.0.0.1:8000/salas/id");
+        let data = fazGet("http://127.0.0.1:8000/salas/id");
+        let salas = JSON.parse(data);
         let tabela = document.getElementById("tabela");
-        tabela.deleteRow(i);
+        salas.forEach(element => {
+            let linha = excluirSala(element);
+            tabela.deleteRow(linha);
+            });
+
         // Aqui você inclui a chamada para a API, usando o verbo DELETE do http
         // Depois exibe a mensagem de sucesso e atualiza a página de salas, para remover o item excluido da grade
     }
