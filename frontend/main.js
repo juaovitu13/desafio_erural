@@ -24,6 +24,11 @@ function abrirFormCadastro(){
     window.open('cadastro/form.html');
 }
 
+//Abre o formulário de deletar salas
+function abrirFormDeletar(){
+    window.open('excluir/delet.html');
+}
+
 function main() {
     let data = fazGet("http://127.0.0.1:8000/salas");
     let salas = JSON.parse(data);
