@@ -39,8 +39,11 @@ function excluirSala(id) {
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
             let data = fazDelete("http://127.0.0.1:8000/salas/id");
             let salas = JSON.parse(data);
-            let linha = excluirSala(element);
-            tabela.deleteRow(linha);
+            let tabela = document.getElementById("tabela");
+            salas.forEach(element => {
+                let linha = criaLinha(element);
+                tabela.removeChild(linha);
+            });
             return true
             };
 
