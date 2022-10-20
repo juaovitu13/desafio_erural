@@ -28,17 +28,20 @@ function criaLinha(sala) {
     return linha;
 }
 
+function fazDelete(url) {
+    let request = new XMLHttpRequest()
+    request.open("DELETE", url, false)
+    request.send()
+    return request.responseText
+}
+
 function excluirSala(id) {
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
-            return true
-            let data = fazGet("http://127.0.0.1:8000/salas/id");
+            let data = fazDelete("http://127.0.0.1:8000/salas/id");
             let salas = JSON.parse(data);
-            let request = new XMLHttpRequest()
-            request.open("DELETE", url, false)
-            request.send()
-            return request.responseText
             let linha = excluirSala(element);
             tabela.deleteRow(linha);
+            return true
             };
 
         // Aqui você inclui a chamada para a API, usando o verbo DELETE do http
