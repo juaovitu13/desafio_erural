@@ -43,8 +43,9 @@ function excluirSala(id) {
             salas.forEach(element => {
                 let linha = criaLinha(element);
                 tabela.removeChild(linha);
+                return true
             });
-            return true
+            
             };
 
         // Aqui você inclui a chamada para a API, usando o verbo DELETE do http
