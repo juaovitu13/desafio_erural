@@ -40,17 +40,17 @@ function excluirSala(id) {
             let data = fazDelete("http://127.0.0.1:8000/salas/id");
             let salas = JSON.parse(data);
             let tabela = document.getElementById("tabela");
-            salas.forEach(element => {
-                let linha = criaLinha(element);
-                tabela.removeChild(linha);
-                return true
-            });
+            var e = document.querySelector("tr");
+            let linha = criaLinha(Object);
+            tabela.removeChild(linha);
+            return true
+            };
             
             };
 
         // Aqui você inclui a chamada para a API, usando o verbo DELETE do http
         // Depois exibe a mensagem de sucesso e atualiza a página de salas, para remover o item excluido da grade
-    }
+    
 
 
     //Abre o formulário de cadastro de salas
