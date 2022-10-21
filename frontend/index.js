@@ -36,15 +36,24 @@ function fazDelete(url) {
 }
 
 function excluirSala(id) {
+    let data = fazDelete("http://127.0.0.1:8000/salas/id");
+    let salas = JSON.parse(data);
+    let tabela = document.getElementById("tabela");
+    Location.reload()
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
-            let data = fazDelete("http://127.0.0.1:8000/salas/id");
-            let salas = JSON.parse(data);
-            let tabela = document.getElementById("tabela");
-            tabela.removeChild(linha);
+             //Quando dá certo, o servidor retorna 200
+             if (request.status === 200) {
+                var json = JSON.parse(request.responseText);
+
+                alert(json.message);
+                //Quando dá erro, qualquer código http diferente de 200 é retornada
+            } else {
+                alert('Erro ao excluir a sala! ' + request.responseText);
+            }
+        }
             return true
             };
             
-            };
 
         // Aqui você inclui a chamada para a API, usando o verbo DELETE do http
         // Depois exibe a mensagem de sucesso e atualiza a página de salas, para remover o item excluido da grade
