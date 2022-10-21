@@ -40,8 +40,6 @@ function excluirSala(id) {
             let data = fazDelete("http://127.0.0.1:8000/salas/id");
             let salas = JSON.parse(data);
             let tabela = document.getElementById("tabela");
-            var e = document.querySelector("tr");
-            let linha = criaLinha(Object);
             tabela.removeChild(linha);
             return true
             };
