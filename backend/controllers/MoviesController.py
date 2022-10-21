@@ -65,7 +65,8 @@ def obter_salas():
     return salas
     
 #Update
-@app.put("/salas")
+@app.put("/salas") 
+#esse é o método que você tem que consumir agora, lá do lado do javascript
 def atualizar_sala(sala: Sala):
     for i in range(len(salas)):
         if salas[i].id == sala.id:
@@ -74,7 +75,7 @@ def atualizar_sala(sala: Sala):
     return{"Status": 404, "Mensagem": "Sala não encontrada"}
 
 #Delete
-@app.delete("/salas/id")
+@app.delete("/salas/{id}")
 def deletar_sala(id: str):
     for i in range(len(salas)):
         if salas[i].id == id:

@@ -37,6 +37,12 @@ function testarSala() {
     return true;
 }
 
+//Abre a lista de salas cadastradas
+function abrirTelaInicial() {
+    window.location.href = '../index.html'
+}
+
+
 function cadastrarSala() {
 
     if (testarSala() == false) {
