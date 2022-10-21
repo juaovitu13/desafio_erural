@@ -39,7 +39,6 @@ function excluirSala(id) {
     let data = fazDelete("http://127.0.0.1:8000/salas/id");
     let salas = JSON.parse(data);
     let tabela = document.getElementById("tabela");
-    Location.reload()
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
              //Quando dá certo, o servidor retorna 200
              if (request.status === 200) {
@@ -51,6 +50,7 @@ function excluirSala(id) {
                 alert('Erro ao excluir a sala! ' + request.responseText);
             }
         }
+            Location.reload()
             return true
             };
             
