@@ -40,7 +40,7 @@ function excluirSala(id) {
         let request = fazDelete("http://127.0.0.1:8000/salas/"+id);        
         
         //Quando dá certo, o servidor retorna 200
-        if (request.status === 200) {//<-Este teste tem que ser feito depois da requisição uai.
+        if (request.status === 200) {
             var json = JSON.parse(request.responseText);
             alert(json.message);
             //Quando dá erro, qualquer código http diferente de 200 é retornada
