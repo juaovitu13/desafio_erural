@@ -19,3 +19,8 @@ function editarSala(id) {
         }
     }  
 };
+
+//Abre a lista de salas cadastradas
+function abrirTelaInicial() {
+    window.location.href = '../index.html'
+}
