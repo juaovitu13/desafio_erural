@@ -51,35 +51,16 @@ function excluirSala(id) {
     window.location.reload();    
 };
 
-function Editar(url) {
-    let request = new XMLHttpRequest()
-    request.open("PUT", url, false)
-    request.send()
-    return request
-}
-
-function editarSala(id) {
-    if (confirm("Tem certeza que deseja editar a sala de id: " + id + "?") == true) {
-        let request = Editar("http://127.0.0.1:8000/salas/"+id);        
-        
-        //Quando dá certo, o servidor retorna 200
-        if (request.status === 200) {
-            var json = JSON.parse(request.responseText);
-            alert(json.message);
-            //Quando dá erro, qualquer código http diferente de 200 é retornada
-        } else {
-            alert('Erro ao editar a sala! ' + request.responseText);
-        }
-    }
-    window.location.reload();    
-};
-
-
-
 //Abre o formulário de cadastro de salas
 function abrirFormCadastro() {
     window.location.href = 'cadastro/form.html'
 }
+
+//Abre o formulário de cadastro de salas
+function editarSala() {
+    window.location.href = 'cadastro/edit.html'
+}
+
 
 function main() {
 
