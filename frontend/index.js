@@ -51,6 +51,13 @@ function excluirSala(id) {
     window.location.reload();    
 };
 
+function Editar(url) {
+    let request = new XMLHttpRequest()
+    request.open("PUT", url, false)
+    request.send()
+    return request
+}
+
 
 
 //Abre o formulário de cadastro de salas
