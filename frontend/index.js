@@ -17,7 +17,12 @@ function criaLinha(sala) {
 
     //Cria a coluna com o botão para excluir
     tdExcluir = document.createElement("td");
-    tdExcluir.innerHTML = '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>' + '<button type="button" class="btn btn-danger" onclick="editarSala(' + tdId.textContent + ')">Editar</button>';
+    //Questão de organização de código. Não escreva comandos que 
+    //seja necessãrio rolar a barra horizontal para vê-los completamente
+    
+    tdExcluir.innerHTML = 
+        '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>' + 
+        '<button type="button" class="btn btn-danger" onclick="editarSala(' + tdId.textContent + ')">Editar</button>';
 
     //Adiciona as colunas na linha
     linha.appendChild(tdId);
@@ -56,8 +61,9 @@ function abrirFormCadastro() {
     window.location.href = 'cadastro/form.html'
 }
 
-//Abre o formulário de cadastro de salas
-function editarSala() {
+//Abre o formulário de atualizar salas
+function editarSala(id) {
+    alert('O usuário quer editar a sala de id: '+ id)
     window.location.href = 'cadastro/edit.html'
 }
 

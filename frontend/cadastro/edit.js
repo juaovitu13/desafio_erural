@@ -5,6 +5,13 @@ function Editar(url) {
     return request
 }
 
+function dados(url) {
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request
+}
+
 function editarSala(id) {
     if (confirm("Tem certeza que deseja editar a sala de id: " + id + "?") == true) {
         let request = Editar("http://127.0.0.1:8000/salas/"+id);        
