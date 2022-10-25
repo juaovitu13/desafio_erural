@@ -1,3 +1,5 @@
+//Fazendo requests para a API
+
 function Editar(url) {
     let request = new XMLHttpRequest()
     request.open("PUT", url, false)
@@ -11,6 +13,16 @@ function dados(url) {
     request.send()
     return request
 }
+
+
+//funções para executar o metodo atualizar
+
+function mostraDados(id) {
+    let request = dados("http://127.0.0.1:8000/salas"+id+nome);
+    var json = JSON.parse(request.responseText);
+    localStorage.setItem(id, nome);
+}
+
 
 function editarSala(id) {
     if (confirm("Tem certeza que deseja editar a sala de id: " + id + "?") == true) {

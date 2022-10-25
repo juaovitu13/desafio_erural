@@ -17,9 +17,6 @@ function criaLinha(sala) {
 
     //Cria a coluna com o botão para excluir
     tdExcluir = document.createElement("td");
-    //Questão de organização de código. Não escreva comandos que 
-    //seja necessãrio rolar a barra horizontal para vê-los completamente
-    
     tdExcluir.innerHTML = 
         '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>' + 
         '<button type="button" class="btn btn-danger" onclick="editarSala(' + tdId.textContent + ')">Editar</button>';
