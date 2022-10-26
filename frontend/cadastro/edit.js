@@ -18,7 +18,7 @@ function dados(url) {
 //funções para executar o metodo atualizar
 
 function mostraDados(id) {
-    let request = dados("http://127.0.0.1:8000/salas"+id+nome);
+    let request = dados("http://127.0.0.1:8000/salas/{id_sala}");
     var json = JSON.parse(request.responseText);
     localStorage.setItem(id, nome);
 }
