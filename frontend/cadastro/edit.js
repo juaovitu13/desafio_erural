@@ -27,7 +27,8 @@ function mostraDados(id) {
 function editarSala(id) {
     if (confirm("Tem certeza que deseja editar a sala de id: " + id + "?") == true) {
         let request = Editar("http://127.0.0.1:8000/salas/"+id);  
-        var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });      
+        var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });   
+        salaCadastrada.nomeSala = "nome atualizado"   
         
         //Quando dá certo, o servidor retorna 200
         if (request.status === 200) {
