@@ -1,9 +1,14 @@
 //Fazendo requests para a API
 
+
+var idSala = document.getElementById("idSala");
+var nomeSala = document.getElementById("nomeSala");
+var resposta = document.getElementById("resposta");
+
 function Editar(url) {
     let request = new XMLHttpRequest()
     request.open("PUT", url, false)
-    request.send()
+    request.send();
     return request
 }
 
@@ -27,19 +32,20 @@ function mostraDados(id) {
 function editarSala(id) {
     if (confirm("Tem certeza que deseja editar a sala de id: " + id + "?") == true) {
         let request = Editar("http://127.0.0.1:8000/salas/"+id);  
-        var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });   
-        salaCadastrada.nomeSala = "nome atualizado"   
-        
+        var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });     
         //Quando dá certo, o servidor retorna 200
         if (request.status === 200) {
             var json = JSON.parse(request.responseText);
+            request.send(data);
             alert(json.message);
-            //Quando dá erro, qualquer código http diferente de 200 é retornada
+        //Quando dá erro, qualquer código http diferente de 200 é retornada
         } else {
-            alert('Erro ao editar a sala! ' + request.responseText);
-        }
+           alert('Erro ao editar a sala! ' + request.responseText);
+            }
     }  
 };
+
+
 
 //Abre a lista de salas cadastradas
 function abrirTelaInicial() {

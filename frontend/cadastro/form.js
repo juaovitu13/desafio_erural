@@ -66,6 +66,7 @@ function cadastrarSala() {
                 alert('Erro ao cadastrar a sala! ' + request.responseText);
             }
         }
+        window.location.reload();
     };
 
     //Aqui é o JSON que vai ser enviado para o servidor
