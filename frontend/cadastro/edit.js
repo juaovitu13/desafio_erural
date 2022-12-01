@@ -32,10 +32,11 @@ function mostraDados(id) {
 function editarSala(id) {
     if (confirm("Tem certeza que deseja editar a sala de id: " + id + "?") == true) {
         let request = Editar("http://127.0.0.1:8000/salas/"+id);  
-        var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });     
+             
         //Quando dá certo, o servidor retorna 200
         if (request.status === 200) {
             var json = JSON.parse(request.responseText);
+            var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });
             request.send(data);
             alert(json.message);
         //Quando dá erro, qualquer código http diferente de 200 é retornada
