@@ -8,7 +8,9 @@ function fazGet(url) {
 }
 
 function criaLinha(sala) {
+
     this.salas.push(sala)
+
     console.log(sala)
     linha = document.createElement("tr");
     tdId = document.createElement("td");
@@ -78,6 +80,8 @@ function editarSala(id) {
 
 
 function main() {
+
+    this.salas = []
 
     let data = fazGet("http://127.0.0.1:8000/salas");
     let salas = JSON.parse(data);
