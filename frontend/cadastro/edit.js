@@ -1,13 +1,22 @@
+
+//Tenta recuperar o JSON da sala sendo editada, através do localStorage
+var JsonsalaSendoEditata = localStorage.getItem('salaSendoEditada');
+
+//Converte o JSON da sala recuperado do storage, para um objeto JavaScript
+var salaSendoEditata = JSON.parse(JsonsalaSendoEditata)
+
+
 //Variaveis auxiliares
 
 var request = null;
-
 var idSala = document.getElementById("idSala");
 var nomeSala = document.getElementById("nomeSala");
-
 var resposta = document.getElementById("resposta");
 
-//Fazendo request para a API
+//Mostra os dados da sala que está sendo editata
+idSala.value = salaSendoEditata.id
+nomeSala.value = salaSendoEditata.nome
+
 function createRequest() {
     try {
         request = new XMLHttpRequest();
@@ -45,7 +54,7 @@ function abrirTelaInicial() {
     window.location.href = '../index.html'
 }
 
-//Função que atualiza
+
 function editarSala() {
 
     if (testarSala() == false) {
@@ -66,7 +75,7 @@ function editarSala() {
                 alert(json.message);
                 //Quando dá erro, qualquer código http diferente de 200 é retornada
             } else {
-                alert('Erro ao Atualizar a sala! ' + request.responseText);
+                alert('Erro ao editar a sala! ' + request.responseText);
             }
         }
         window.location.reload();
@@ -77,3 +86,5 @@ function editarSala() {
     request.send(data);
 
 }
+
+

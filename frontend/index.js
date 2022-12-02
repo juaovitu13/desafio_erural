@@ -1,3 +1,5 @@
+var salas = [];
+
 function fazGet(url) {
     let request = new XMLHttpRequest()
     request.open("GET", url, false)
@@ -6,6 +8,7 @@ function fazGet(url) {
 }
 
 function criaLinha(sala) {
+    this.salas.push(sala)
     console.log(sala)
     linha = document.createElement("tr");
     tdId = document.createElement("td");
@@ -60,7 +63,16 @@ function abrirFormCadastro() {
 
 //Abre o formulário de atualizar salas
 function editarSala(id) {
-    alert('O usuário quer editar a sala de id: '+ id)
+   
+    //Localiza a sala no array de salas, através do id
+    let salaPesquisadaNoArray = salas.find(element => id = id);
+
+    //Gera o JSON da sala selecionada
+    let JsonSalaPesquisadaNoArray = JSON.stringify(salaPesquisadaNoArray)
+
+    //Salva o JSON da sala no localStorage
+    localStorage.setItem('salaSendoEditada', JsonSalaPesquisadaNoArray);
+
     window.location.href = 'cadastro/edit.html'
 }
 
