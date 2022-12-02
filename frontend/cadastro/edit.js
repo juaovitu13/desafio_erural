@@ -17,6 +17,8 @@ var resposta = document.getElementById("resposta");
 idSala.value = salaSendoEditata.id
 nomeSala.value = salaSendoEditata.nome
 
+
+//função que faz request e atualiza
 function createRequest() {
     try {
         request = new XMLHttpRequest();
