@@ -15,26 +15,10 @@ var resposta = document.getElementById("resposta");
 idSala.value = salaSendoEditata.id
 nomeSala.value = salaSendoEditata.nome
 
-function Editar(url) {
-    let request = new XMLHttpRequest()
-    request.open("PUT", url, false)
-    request.send();
-    return request
-}
 
-function dados(url) {
-    let request = new XMLHttpRequest()
-    request.open("GET", url, false)
-    request.send()
-    return request
-}
 //funções para executar o metodo atualizar
 
-function mostraDados(dados) {
-    let request = dados("http://127.0.0.1:8000/salas/{id_sala}");
-    var json = JSON.parse(request.responseText);
-    localStorage.setItem(id, nome);
-}
+
 
 function editarSala() {
     let request = new XMLHttpRequest()
