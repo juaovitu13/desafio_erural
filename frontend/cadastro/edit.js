@@ -18,7 +18,7 @@ idSala.value = salaSendoEditata.id
 nomeSala.value = salaSendoEditata.nome
 
 
-//função que faz request e atualiza
+//função que faz request
 function createRequest() {
     try {
         request = new XMLHttpRequest();
@@ -56,7 +56,7 @@ function abrirTelaInicial() {
     window.location.href = '../index.html'
 }
 
-
+//função que edita a sala
 function editarSala() {
 
     if (testarSala() == false) {
