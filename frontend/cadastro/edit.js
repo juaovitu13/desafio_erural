@@ -36,14 +36,14 @@ function editarSala(id) {
         //Quando dá certo, o servidor retorna 200
         if (request.status === 200) {
             var json = JSON.parse(request.responseText);
-            var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });
-            request.send(data);
             alert(json.message);
         //Quando dá erro, qualquer código http diferente de 200 é retornada
         } else {
            alert('Erro ao editar a sala! ' + request.responseText);
             }
     }  
+    var data = JSON.stringify({ "id": idSala.value, "nome": nomeSala.value });
+    request.send(data);
 };
 
 
