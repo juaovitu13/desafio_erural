@@ -17,9 +17,6 @@ nomeSala.value = salaSendoEditata.nome
 
 
 //funções para executar o metodo atualizar
-
-
-
 function editarSala() {
     let request = new XMLHttpRequest()
 
