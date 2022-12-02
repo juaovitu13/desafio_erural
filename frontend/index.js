@@ -65,6 +65,7 @@ function abrirFormCadastro() {
 
 //Abre o formulário de atualizar salas
 function editarSala(id) {
+    window.location.href = 'cadastro/edit.html'
    
     //Localiza a sala no array de salas, através do id
     let salaPesquisadaNoArray = salas.find(element => id = id);
@@ -75,7 +76,7 @@ function editarSala(id) {
     //Salva o JSON da sala no localStorage
     localStorage.setItem('salaSendoEditada', JsonSalaPesquisadaNoArray);
 
-    window.location.href = 'cadastro/edit.html'
+    
 }
 
 
