@@ -68,7 +68,7 @@ function editarSala(id) {
     window.location.href = 'cadastro/edit.html'
    
     //Localiza a sala no array de salas, através do id
-    let salaPesquisadaNoArray = salas.find(element => id = id);
+    let salaPesquisadaNoArray = salas.find(element => element.id == id);
 
     //Gera o JSON da sala selecionada
     let JsonSalaPesquisadaNoArray = JSON.stringify(salaPesquisadaNoArray)
