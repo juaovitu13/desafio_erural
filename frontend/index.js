@@ -97,7 +97,7 @@ function consultaId() {
 
 function mostrarSala(dados) {
     let resultado = document.querySelector('#resultado');
-    if (dados.erro) {
+    if (dados.Status) {
         resultado.innerHTML = "Não foi possível localizar a sala";
     } else {
         resultado.innerHTML = `
