@@ -20,9 +20,13 @@
 
 <body>
     <br>
-    <div class="container">
+    <div class="container border border-dark rounded">
+        <br>
         <!-- Navbar -->
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-dark bg-dark border border-dark">
+
+            <button type="button" class="btn btn-primary" onClick="abrirFormCadastro();">Cadastrar
+            </button>
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
@@ -76,12 +80,7 @@
             </div>
         </div>
 
-        <div class="col-12">
-            <button type="button" class="btn btn-primary form-group col-lg-2" onClick="abrirFormCadastro();">Cadastrar
-            </button>
-        </div>
-
-        <div class="jumbotron jumbotron-fluid" id="resultado">
+        <div class="jumbotron jumbotron-fluid border border-dark" id="resultado">
             <p class="text-primary">Seu resultado aqui</p>
 
         </div>
