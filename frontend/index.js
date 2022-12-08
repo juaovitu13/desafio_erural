@@ -79,6 +79,32 @@ function editarSala(id) {
     
 }
 
+function consultaId(){
+    let id = document.querySelector('#id').value;
+
+    if (id.length == ' '){
+        alert('Você não digitou um valor');
+        return;
+    }
+    let url = `http://127.0.0.1:8000/salas/${id}/`;
+
+    fetch(url).then(function(response) {
+        response.json().then(mostrarSala);
+
+    });
+
+}
+
+function mostrarSala(dados) {
+    let resultado = document.querySelector('#resultado');
+    if(dados.erro){
+        resultado.innerHTML = "Não foi possível localizar a sala";
+    } else {
+    resultado.innerHTML = `<p>Id: ${dados.id}</p>
+                           <p>Nome: ${dados.nome}</p>`
+    }
+}
+
 
 function main() {
 
