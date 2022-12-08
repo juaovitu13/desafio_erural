@@ -100,10 +100,15 @@ function mostrarSala(dados) {
     if(dados.erro){
         resultado.innerHTML = "Não foi possível localizar a sala";
     } else {
-    resultado.innerHTML = `<p>Id: ${dados.id}</p>
-                           <p>Nome: ${dados.nome}</p>`
+    resultado.innerHTML = `
+    <li class="list-group-item">Id da Sala: ${dados.id}</li>
+    <li class="list-group-item">Nome da Sala: ${dados.nome}</li>
+    <button type="button" class="btn btn-warning" onClick="window.location.reload();">Limpar</button>
+    `
     }
 }
+
+
 
 
 function main() {
