@@ -22,8 +22,8 @@ function criaLinha(sala) {
 
     //Cria a coluna com o botão para excluir
     tdExcluir = document.createElement("td");
-    tdExcluir.innerHTML = 
-        '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>' + 
+    tdExcluir.innerHTML =
+        '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>' +
         '<button type="button" class="btn btn-danger" onclick="editarSala(' + tdId.textContent + ')">Editar</button>';
 
     //Adiciona as colunas na linha
@@ -44,8 +44,8 @@ function fazDelete(url) {
 
 function excluirSala(id) {
     if (confirm("Tem certeza que deseja excluir a sala de id: " + id + "?") == true) {
-        let request = fazDelete("http://127.0.0.1:8000/salas/"+id);        
-        
+        let request = fazDelete("http://127.0.0.1:8000/salas/" + id);
+
         //Quando dá certo, o servidor retorna 200
         if (request.status === 200) {
             var json = JSON.parse(request.responseText);
@@ -55,7 +55,7 @@ function excluirSala(id) {
             alert('Erro ao excluir a sala! ' + request.responseText);
         }
     }
-    window.location.reload();    
+    window.location.reload();
 };
 
 //Abre o formulário de cadastro de salas
@@ -66,7 +66,7 @@ function abrirFormCadastro() {
 //Abre o formulário de atualizar salas
 function editarSala(id) {
     window.location.href = 'cadastro/edit.html'
-   
+
     //Localiza a sala no array de salas, através do id
     let salaPesquisadaNoArray = salas.find(element => element.id == id);
 
@@ -76,19 +76,19 @@ function editarSala(id) {
     //Salva o JSON da sala no localStorage
     localStorage.setItem('salaSendoEditada', JsonSalaPesquisadaNoArray);
 
-    
+
 }
 
-function consultaId(){
+function consultaId() {
     let id = document.querySelector('#id').value;
 
-    if (id.length == ' '){
+    if (id.length == ' ') {
         alert('Você não digitou um valor');
         return;
     }
     let url = `http://127.0.0.1:8000/salas/${id}/`;
 
-    fetch(url).then(function(response) {
+    fetch(url).then(function (response) {
         response.json().then(mostrarSala);
 
     });
@@ -97,19 +97,16 @@ function consultaId(){
 
 function mostrarSala(dados) {
     let resultado = document.querySelector('#resultado');
-    if(dados.erro){
+    if (dados.erro) {
         resultado.innerHTML = "Não foi possível localizar a sala";
     } else {
-    resultado.innerHTML = `
+        resultado.innerHTML = `
     <li class="list-group-item">Id da Sala: ${dados.id}</li>
     <li class="list-group-item">Nome da Sala: ${dados.nome}</li>
     <button type="button" class="btn btn-warning" onClick="window.location.reload();">Limpar</button>
     `
     }
 }
-
-
-
 
 function main() {
 
