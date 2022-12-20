@@ -120,6 +120,7 @@ function mostrarSala(dados) {
         resultado.innerHTML = `
     <li class="list-group-item">Id da Sala: ${dados.id}</li>
     <li class="list-group-item">Nome da Sala: ${dados.nome}</li>
+    <li class="list-group-item">Videos: ${dados.videos}</li>
     <button type="button" class="btn btn-warning" onClick="window.location.reload();">Limpar</button>
     `
     }
