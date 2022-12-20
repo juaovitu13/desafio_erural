@@ -24,7 +24,9 @@ function criaLinha(sala) {
     tdExcluir = document.createElement("td");
     tdExcluir.innerHTML =
         '<button type="button" class="btn btn-danger" onclick="excluirSala(' + tdId.textContent + ')">Deletar</button>' +
-        '<button type="button" class="btn btn-danger" onclick="editarSala(' + tdId.textContent + ')">Editar</button>';
+        '<button type="button" class="btn btn-danger" onclick="editarSala(' + tdId.textContent + ')">Editar</button>' +
+        '<button type="button" class="btn btn-danger" onclick="abrirFormVideo(' + tdId.textContent + ')">Cadastrar Video</button>';
+
 
     //Adiciona as colunas na linha
     linha.appendChild(tdId);
@@ -62,6 +64,21 @@ function excluirSala(id) {
 function abrirFormCadastro() {
     window.location.href = 'cadastro/form.html'
 }
+
+//Abre o formulário de cadastro de videos
+function abrirFormVideo(id) {
+    window.location.href = 'cadastro/formVideo.html'
+
+    //Localiza a sala no array de salas, através do id
+    let salaPesquisadaNoArray = salas.find(element => element.id == id);
+
+    //Gera o JSON da sala selecionada
+    let JsonSalaPesquisadaNoArray = JSON.stringify(salaPesquisadaNoArray)
+
+    //Salva o JSON da sala no localStorage
+    localStorage.setItem('salaSendoConsultada', JsonSalaPesquisadaNoArray);
+}
+
 
 //Abre o formulário de atualizar salas
 function editarSala(id) {
