@@ -73,7 +73,7 @@ function cadastrarVideo() {
     }
 
     createRequest();
-    var url = `http://127.0.0.1:8000/salas/${idSala}/videos/`;
+    var url = `http://127.0.0.1:8000/salas/${salaSendoConsultada.id}/videos`;
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
