@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Nosso CSS -->
+    <link rel="stylesheet" href="../css/global.css">
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Cadastrar Video</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <br>
+
+        <div class="form-group col-lg-12">
+            <span class="input-group-text" style="font-size:25px;">Deletar Video</span>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="idSala">Id da sala</label>
+                            <input readonly class="form-control" id="idSala" name="idSala" value=""
+                                onchange="atualizaTotalItem()" />
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="nomeSala">Nome da sala</label>
+                            <input readonly class="form-control" id="nomeSala" name="nomeSala" value="">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="idSala">Id do video</label>
+                            <input class="form-control" id="idVideo" name="idVideo" value=""
+                                onchange="atualizaTotalItem()" />
+                        </div>
+
+                        <button type="button" class="btn btn-primary form-group col-lg-2"
+                            onClick="deletarVideo();">Deletar Video</button>
+
+                        <button type="button" class="btn btn-primary form-group col-lg-2"
+                            onClick="abrirTelaInicial();">Voltar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <script language="javascript" src="deleteVideo.js" type="text/javascript"></script>
+</body>
+
+</html>
