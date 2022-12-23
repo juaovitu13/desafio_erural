@@ -14,10 +14,8 @@ var resposta = document.getElementById("resposta");
 idSala.value = salaSendoConsultada.id
 nomeSala.value = salaSendoConsultada.nome
 
-//Variaveis do cadastro do video
 
-var idVideo = document.getElementById("idVideo");
-var resposta = document.getElementById("resposta");
+//Funções para executar o delete
 
 function fazDelete(url) {
     let request = new XMLHttpRequest()
@@ -27,7 +25,8 @@ function fazDelete(url) {
 }
 
 function deletarVideo(idVideo) {
-    if (confirm("Tem certeza que deseja excluir a sala de id: " + idVideo + "?") == true) {
+    var idVideo = document.getElementById("idVideo").value;
+    if (confirm("Tem certeza que deseja excluir o video de id: " + idVideo + "?") == true) {
         let request = fazDelete("http://127.0.0.1:8000/salas/" + salaSendoConsultada.id + "/videos/" + idVideo);
 
         //Quando dá certo, o servidor retorna 200
@@ -36,7 +35,7 @@ function deletarVideo(idVideo) {
             alert(json.message);
             //Quando dá erro, qualquer código http diferente de 200 é retornada
         } else {
-            alert('Erro ao excluir a sala! ' + request.responseText);
+            alert('Erro ao excluir o video! ' + request.responseText);
         }
     }
     window.location.reload();
