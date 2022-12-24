@@ -135,9 +135,19 @@ function mostrarSala(dados) {
         resultado.innerHTML = `
     <li class="list-group-item">Id da Sala: ${dados.id}</li>
     <li class="list-group-item">Nome da Sala: ${dados.nome}</li>
-    <li class="list-group-item">Videos: ${dados.videos}</li>
+    <li class="list-group-item">Videos:
+    <ul>
+      <li>Id do Video: ${dados.videos[0].id}</li>
+      <li>Nome do Video: ${dados.videos[0].nome}</li>
+      <li>Link do Video: ${dados.videos[0].link}</li>
+      <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="${dados.videos[0].link}" allowfullscreen></iframe>
+</div>
+    </ul>
+    </li>
     <button type="button" class="btn btn-warning" onClick="window.location.reload();">Limpar</button>
     `
+        console.log(dados.videos[0]);
     }
 }
 
